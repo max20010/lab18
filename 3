@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int m, n, min, min_x;
+	cout << "Введите кол-во строк в массиве: ";
+	cin >> m;
+	cout << "Введите кол-во столбцов в массиве: ";
+	cin >> n;
+	int* min_p = new int[n];
+	for (int i = 0; i < n; i++) {
+		min_p[i] = 1;
+	}
+	int** a = new int* [m];
+	for (int i = 0; i < m; i++) {
+		a[i] = new int[n];
+	}
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			cin >> a[i][j];
+		}
+	}
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			min_p[j] *= a[i][j];
+			cout << a[i][j] << "\t";
+		}
+		cout << endl;
+	}
+	min = min_p[0];
+	min_x = 0;
+	for (int i = 0; i < n; i++) {
+		if (min > min_p[i]) {
+			min = min_p[i];
+			min_x = i;
+		}
+	}
+	cout << "min:\t" << min_x + 1 << "\t" << min << endl;
+	for (int i = 0; i < m; i++) {
+		delete[] a[i];
+	}
+	delete[] a;
+	delete[] min_p;
+}
