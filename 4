@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int m, n;
+	float sum = 0;
+	cout << "Введите кол-во строк в массиве: ";
+	cin >> m;
+	cout << "Введите кол-во столбцов в массиве: ";
+	cin >> n;
+	int** a = new int* [m];
+	for (int i = 0; i < m; i++) {
+		a[i] = new int[n];
+	}
+	for (int i = 0,l=0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			//cin >> a[i][j];
+			l++;
+			a[i][j] = l;
+		}
+	}
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			cout << a[i][j]<< "\t";
+		}
+		cout << endl;
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			sum += a[j][i];
+		}
+		sum /= m;
+		cout << "Ср. ариф.: "<<sum<<" элементы:\t";
+		for (int j = 0; j < m; j++) {
+			if (a[j][i] > sum) {
+				cout << a[j][i]<< "\t";
+			}
+		}
+		sum = 0;
+		cout << endl;
+	}
+	for (int i = 0; i < m; i++) {
+		delete[] a[i];
+	}
+	delete[] a;
+}
