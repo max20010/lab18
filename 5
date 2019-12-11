@@ -3,7 +3,7 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "ru");
-	int m, n,x=0;
+	int m, n, x = 0;
 	bool check = false;
 	float sum = 0;
 	cout << "Введите кол-во строк в массиве: ";
@@ -14,10 +14,11 @@ int main()
 	for (int i = 0; i < m; i++) {
 		a[i] = new int[n];
 	}
-	for (int i = 0,l=0; i < m; i++) {
+	srand(0);
+	for (int i = 0, l = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
 			//cin >> a[i][j];
-			l++;
+			l+=rand()%10;
 			a[i][j] = l;
 		}
 	}
@@ -34,7 +35,7 @@ int main()
 			}
 		}
 		if (x == m && !check) {
-			cout << i++ << endl;
+			cout << i+1 << endl;
 			check = true;
 		}
 		x = 0;
